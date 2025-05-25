@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <!-- Book background -->
+  <rect width="300" height="400" rx="10" fill="#172554" />
+  
+  <!-- Book spine -->
+  <rect x="0" y="0" width="40" height="400" rx="5" fill="#5e60ce" />
+  
+  <!-- Book cover gradient -->
+  <defs>
+    <linearGradient id="cover-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a1128;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Brain shape pattern -->
+    <pattern id="brain-pattern" patternUnits="userSpaceOnUse" width="40" height="40" patternTransform="scale(0.5) rotate(0)">
+      <path d="M10,15 C5,10 15,0 25,10 C35,0 45,10 40,15 C45,25 35,35 25,30 C15,35 5,25 10,15" 
+            fill="none" stroke="#48bfe3" stroke-width="1" opacity="0.3" />
+    </pattern>
+  </defs>
+  
+  <rect x="40" y="0" width="260" height="400" rx="5" fill="url(#cover-gradient)" />
+  
+  <!-- Psychology-themed overlay pattern -->
+  <rect x="40" y="0" width="260" height="400" rx="5" fill="url(#brain-pattern)" />
+  
+  <!-- Book title placeholder -->
+  <rect x="80" y="100" width="180" height="30" rx="5" fill="#5e60ce" opacity="0.5" />
+  <rect x="80" y="150" width="140" height="20" rx="5" fill="#48bfe3" opacity="0.3" />
+  
+  <!-- Brain icon (psychology-related) -->
+  <g transform="translate(150, 240) scale(0.7)">
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#48bfe3" stroke-width="3" opacity="0.7" />
+    <path d="M-25,-15 C-40,-30 -20,-45 0,-30 C20,-45 40,-30 25,-15 C35,0 25,25 0,30 C-25,25 -35,0 -25,-15" 
+          fill="none" stroke="#48bfe3" stroke-width="5" stroke-linecap="round" />
+    <path d="M-10,20 L-10,40 M10,20 L10,40" stroke="#48bfe3" stroke-width="3" />
+  </g>
+  
+  <!-- Decorative elements -->
+  <circle cx="70" cy="50" r="15" fill="#ff9e00" opacity="0.2" />
+  <circle cx="230" cy="350" r="20" fill="#48bfe3" opacity="0.15" />
+  
+  <!-- OpenBooks logo -->
+  <text x="150" y="340" font-family="Arial" font-size="16" fill="#72efdd" text-anchor="middle" font-weight="bold">OpenBooks</text>
+</svg> 

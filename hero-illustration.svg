@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <!-- Background elements -->
+  <rect width="600" height="400" fill="#0a1128" opacity="0.3" />
+  
+  <!-- Brain background pattern -->
+  <g opacity="0.1">
+    <path d="M100,200 C50,150 150,50 250,150 C350,50 450,150 400,200 C450,250 350,350 250,300 C150,350 50,250 100,200" 
+          fill="none" stroke="#5e60ce" stroke-width="10" transform="translate(100, -50)" />
+    <path d="M100,200 C50,150 150,50 250,150 C350,50 450,150 400,200 C450,250 350,350 250,300 C150,350 50,250 100,200" 
+          fill="none" stroke="#48bfe3" stroke-width="8" transform="translate(-50, 50) scale(0.7)" />
+  </g>
+  
+  <!-- Stack of psychology books -->
+  <g transform="translate(300, 200)">
+    <!-- Book 1 (bottom) -->
+    <rect x="-150" y="-30" width="300" height="60" rx="5" fill="#5e60ce" />
+    <rect x="-145" y="-25" width="290" height="50" rx="3" fill="#172554" />
+    <text x="-120" y="0" font-family="Arial" font-size="18" fill="#48bfe3">Psychology</text>
+    
+    <!-- Book 2 (middle) -->
+    <rect x="-170" y="-80" width="270" height="50" rx="5" fill="#48bfe3" transform="rotate(-10)" />
+    <rect x="-165" y="-75" width="260" height="40" rx="3" fill="#172554" transform="rotate(-10)" />
+    <text x="-145" y="-55" font-family="Arial" font-size="16" fill="#72efdd" transform="rotate(-10)">Cognitive Science</text>
+    
+    <!-- Book 3 (top) -->
+    <rect x="-130" y="-120" width="240" height="45" rx="5" fill="#ff9e00" transform="rotate(5)" />
+    <rect x="-125" y="-115" width="230" height="35" rx="3" fill="#172554" transform="rotate(5)" />
+    <text x="-100" y="-100" font-family="Arial" font-size="14" fill="#ff9e00" transform="rotate(5)">Human Mind</text>
+
+    <!-- Open book (front) -->
+    <g transform="translate(0, -160) rotate(-5)">
+      <!-- Left page -->
+      <path d="M-100,0 L-100,120 L-5,120 L-5,0 Z" fill="#1e3a8a" stroke="#48bfe3" stroke-width="1" />
+      <!-- Right page -->
+      <path d="M5,0 L5,120 L100,120 L100,0 Z" fill="#1e3a8a" stroke="#48bfe3" stroke-width="1" />
+      <!-- Book spine -->
+      <path d="M-5,0 L5,0 L5,120 L-5,120 Z" fill="#ff9e00" />
+      
+      <!-- Brain diagram on left page -->
+      <path d="M-85,-30 C-95,-40 -75,-60 -55,-40 C-35,-60 -15,-40 -25,-30 C-15,-10 -35,0 -55,-5 C-75,0 -95,-10 -85,-30" 
+            transform="translate(0, 60) scale(0.7)" fill="none" stroke="#48bfe3" stroke-width="1.5" />
+      
+      <!-- Text lines on pages (right) -->
+      <line x1="20" y1="20" x2="85" y2="20" stroke="#48bfe3" stroke-width="1" />
+      <line x1="20" y1="35" x2="85" y2="35" stroke="#48bfe3" stroke-width="1" />
+      <line x1="20" y1="50" x2="85" y2="50" stroke="#48bfe3" stroke-width="1" />
+      <line x1="20" y1="65" x2="70" y2="65" stroke="#48bfe3" stroke-width="1" />
+      <line x1="20" y1="80" x2="85" y2="80" stroke="#48bfe3" stroke-width="1" />
+      <line x1="20" y1="95" x2="65" y2="95" stroke="#48bfe3" stroke-width="1" />
+    </g>
+  </g>
+  
+  <!-- Brain icon (right) -->
+  <g transform="translate(450, 100) scale(0.15)">
+    <circle cx="100" cy="100" r="90" fill="#172554" stroke="#5e60ce" stroke-width="10" />
+    <path d="M60,70 C30,40 80,10 100,50 C120,10 170,40 140,70 C180,70 180,130 140,130 C140,170 60,170 60,130 C20,130 20,70 60,70" 
+          fill="none" stroke="#48bfe3" stroke-width="12" />
+    <!-- Neural connections -->
+    <g stroke="#72efdd" stroke-width="3" stroke-linecap="round">
+      <path d="M60,70 L100,50 L140,70 M100,50 L100,30 M60,70 L40,60 M140,70 L160,60" />
+    </g>
+  </g>
+  
+  <!-- Thought bubble with psychology symbols (left) -->
+  <g transform="translate(100, 120) scale(0.15)">
+    <circle cx="100" cy="100" r="60" fill="#ff9e00" opacity="0.8" />
+    <!-- Psychology-related icons within the bubble -->
+    <g stroke="#172554" stroke-width="8" fill="none">
+      <!-- Infinity symbol (connection, continuous process) -->
+      <path d="M75,100 C50,75 75,50 100,75 C125,50 150,75 125,100 C150,125 125,150 100,125 C75,150 50,125 75,100" />
+    </g>
+    <!-- Rays representing thought/idea -->
+    <g stroke="#172554" stroke-width="4">
+      <path d="M180,100 L160,100 M20,100 L40,100 M154,150 L139,135 M46,65 L61,80 M154,50 L139,65 M46,135 L61,120" />
+    </g>
+  </g>
+  
+  <!-- Connecting lines (neural network style) -->
+  <g stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3,3">
+    <path d="M150,120 C200,150 250,130 300,170" />
+    <path d="M450,100 C400,130 350,150 300,170" />
+    <path d="M150,120 C200,100 250,80 300,60" />
+    <path d="M450,100 C400,80 350,60 300,60" />
+    <!-- Additional neural pathways -->
+    <path d="M450,100 C350,130 200,80 150,120" />
+    <path d="M300,200 C350,180 400,190 450,150" />
+  </g>
+  
+  <!-- Psychology symbols/icons scattered across -->
+  <g>
+    <!-- Phi symbol (psychology) -->
+    <text x="500" y="240" font-family="Times New Roman" font-size="30" fill="#48bfe3" opacity="0.4">Ψ</text>
+    <!-- Neuron -->
+    <path d="M70,290 L90,280 L110,290 L130,270" stroke="#5e60ce" stroke-width="1.5" opacity="0.4" fill="none" />
+    <circle cx="70" cy="290" r="8" fill="#5e60ce" opacity="0.4" />
+    <circle cx="130" cy="270" r="6" fill="#5e60ce" opacity="0.4" />
+  </g>
+  
+  <!-- Decorative circles -->
+  <circle cx="500" cy="350" r="20" fill="#5e60ce" opacity="0.15" />
+  <circle cx="520" cy="320" r="15" fill="#ff9e00" opacity="0.15" />
+  <circle cx="80" cy="280" r="25" fill="#48bfe3" opacity="0.15" />
+  <circle cx="50" cy="300" r="12" fill="#72efdd" opacity="0.15" />
+  <circle cx="480" cy="150" r="18" fill="#48bfe3" opacity="0.15" />
+  <circle cx="120" cy="200" r="22" fill="#5e60ce" opacity="0.15" />
+</svg> 
