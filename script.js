@@ -37,7 +37,6 @@ async function loadBooks() {
             const title = lines[i];
             const url = lines[i + 1];
 
-            // Support both /d/.../view and ?id=... formats
             let fileId = null;
             const viewMatch = url.match(/\/d\/([^/]+)\/view/);
             const idMatch = url.match(/id=([^&]+)/);
