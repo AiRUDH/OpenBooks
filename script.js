@@ -62,7 +62,7 @@ async function loadBooks() {
         bookList.innerHTML = books.map(book => `
             <div class="book-card">
                 <div class="book-cover">
-                    <img src="${book.thumbnail}" alt="Cover of ${book.title}" onerror="this.src='default-book.svg'">
+                    <img src="${book.thumbnail}" alt="Cover of ${book.title}" onerror="this.src='https://thumbs.dreamstime.com/z/digital-book-glowing-data-connections-light-effects-symbolizing-knowledge-technology-integration-copy-space-353972538.jpg?ct=jpeg'">
                 </div>
                 <div class="book-info">
                     <h3>${book.title}</h3>
