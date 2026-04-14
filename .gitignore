@@ -1,0 +1,14 @@
+# Python environment and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# Database
+openbooks.db
+
+# macOS system files
+.DS_Store
