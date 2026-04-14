@@ -12,3 +12,8 @@ openbooks.db
 
 # macOS system files
 .DS_Store
+
+# Uploads directory
+# We ignore the directory but can allow specific files (see below)
+uploads/*
+!uploads/.gitkeep
