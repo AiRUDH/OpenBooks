@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenBooks</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #5e60ce;
+        --secondary: #48bfe3;
+        --accent: #ff9e00;
+        --dark-bg: #0a1128;
+        --darker-bg: #050a18;
+        --card-bg: #172554;
+        --text: #ffffff;
+        --text-dim: #b0c4de;
+        --text-accent: #72efdd;
+        --error: #e74c3c;
+        --success: #27ae60;
+        --border: #2563eb;
+        --neutral: #1e3a8a;
+        --shadow: rgba(0, 0, 0, 0.3);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+        min-height: 100vh;
+      }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .hidden {
+        display: none !important;
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-block;
+        padding: 11px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        border: none;
+        font-family: inherit;
+        font-size: 0.95rem;
+      }
+      .btn-primary {
+        background: var(--primary);
+        color: #fff;
+        border: 2px solid var(--primary);
+      }
+      .btn-primary:hover {
+        background: transparent;
+        color: var(--primary);
+      }
+      .btn-secondary {
+        background: transparent;
+        border: 2px solid var(--secondary);
+        color: var(--secondary);
+      }
+      .btn-secondary:hover {
+        background: var(--secondary);
+        color: var(--darker-bg);
+      }
+      .btn-accent {
+        background: var(--accent);
+        color: var(--darker-bg);
+        border: 2px solid var(--accent);
+      }
+
+      /* Header */
+      header {
+        background: var(--darker-bg);
+        box-shadow: 0 2px 10px var(--shadow);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+      }
+      header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+      }
+      .logo h1 {
+        font-size: 1.8rem;
+        color: var(--primary);
+      }
+      .logo h1 span {
+        color: var(--accent);
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+      #nav-user {
+        color: var(--text-accent);
+        font-size: 0.9rem;
+      }
+
+      /* Auth overlay */
+      .auth-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 10, 24, 0.92);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+      }
+      .auth-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        padding: 40px 36px;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(72, 191, 227, 0.15);
+      }
+      .auth-tabs {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 28px;
+      }
+      .auth-tab {
+        flex: 1;
+        padding: 10px;
+        border-radius: 8px;
+        border: 2px solid var(--border);
+        background: transparent;
+        color: var(--text-dim);
+        cursor: pointer;
+      }
+      .auth-tab.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+      .field {
+        margin-bottom: 18px;
+      }
+      .field label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--text-accent);
+        font-size: 0.9rem;
+      }
+      .field input {
+        width: 100%;
+        padding: 11px 14px;
+        border-radius: 8px;
+        border: 2px solid var(--border);
+        background: var(--neutral);
+        color: var(--text);
+      }
+
+      /* Main layout */
+      main {
+        padding-top: 80px;
+      }
+      .hero {
+        padding: 60px 0;
+        background: linear-gradient(135deg, var(--dark-bg), var(--neutral));
+      }
+      .hero-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .upload-section {
+        padding: 40px 0;
+      }
+      .upload-card {
+        background: var(--card-bg);
+        border-radius: 14px;
+        padding: 28px 32px;
+        border: 1px solid rgba(72, 191, 227, 0.15);
+      }
+      .upload-row {
+        display: flex;
+        gap: 16px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+      .file-drop {
+        flex: 1;
+        min-width: 200px;
+        border: 2px dashed var(--border);
+        border-radius: 10px;
+        padding: 18px;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+      }
+      .file-drop input[type="file"] {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      /* Books Grid */
+      .books-section {
+        padding: 40px 0 80px;
+      }
+      .book-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+      }
+      .book-card {
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(72, 191, 227, 0.1);
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s;
+      }
+      .book-card:hover {
+        transform: translateY(-6px);
+      }
+      .book-thumb {
+        height: 140px;
+        background: linear-gradient(135deg, var(--neutral), var(--primary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.5rem;
+      }
+      .book-body {
+        padding: 18px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .book-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: auto;
+        padding-top: 12px;
+      }
+      .read-btn {
+        flex: 1;
+        text-align: center;
+        padding: 8px 10px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        background: var(--secondary);
+        color: var(--darker-bg);
+        text-decoration: none;
+      }
+      .btn-danger-full {
+        flex: 1;
+        text-align: center;
+        padding: 8px 10px;
+        border-radius: 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        background: transparent;
+        border: 2px solid var(--error);
+        color: var(--error);
+        cursor: pointer;
+        transition: 0.3s;
+        font-family: inherit;
+      }
+      .btn-danger-full:hover {
+        background: var(--error);
+        color: #fff;
+      }
+
+      /* Modal */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 10, 24, 0.96);
+        display: flex;
+        flex-direction: column;
+        z-index: 3000;
+      }
+      .modal-bar {
+        background: var(--darker-bg);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(72, 191, 227, 0.15);
+      }
+      .modal-title {
+        font-weight: 600;
+        color: var(--text-accent);
+        flex: 1;
+        margin-left: 15px;
+      }
+      .modal-body {
+        flex: 1;
+      }
+      .modal-body iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1>Open<span>Books</span></h1>
+        </div>
+        <nav>
+          <span id="nav-user"></span>
+          <button
+            class="btn btn-secondary btn-sm"
+            id="btn-logout"
+            onclick="logout()"
+          >
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <div class="auth-overlay" id="auth-overlay">
+      <div class="auth-card">
+        <h2>Open<span>Books</span></h2>
+        <div class="auth-tabs">
+          <button class="auth-tab active" onclick="switchTab('login')">
+            Login
+          </button>
+          <button class="auth-tab" onclick="switchTab('register')">
+            Register
+          </button>
+        </div>
+        <div id="auth-alert"></div>
+        <div id="login-form">
+          <div class="field">
+            <label>Username</label
+            ><input id="l-user" type="text" value="anik" />
+          </div>
+          <div class="field">
+            <label>Password</label><input id="l-pass" type="password" />
+          </div>
+          <button class="btn btn-primary btn-block" onclick="doLogin()">
+            Login &rarr;
+          </button>
+        </div>
+        <div id="register-form" class="hidden">
+          <div class="field">
+            <label>Username</label><input id="r-user" type="text" />
+          </div>
+          <div class="field">
+            <label>Password</label><input id="r-pass" type="password" />
+          </div>
+          <button class="btn btn-primary btn-block" onclick="doRegister()">
+            Register &rarr;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <main id="app" class="hidden">
+      <section class="upload-section">
+        <div class="container">
+          <div class="upload-card">
+            <h2>Add a book</h2>
+            <div class="upload-row">
+              <div class="field">
+                <input id="title-input" type="text" placeholder="Title" />
+              </div>
+              <div class="file-drop">
+                <input
+                  type="file"
+                  id="pdf-input"
+                  onchange="onFileChange(this)"
+                />
+                <span id="file-name">Click to select PDF</span>
+              </div>
+              <button class="btn btn-accent" onclick="uploadBook()">
+                Upload
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="books-section">
+        <div class="container">
+          <div id="book-grid" class="book-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay hidden" id="viewer-modal">
+      <div class="modal-bar">
+        <button class="btn btn-secondary btn-sm" onclick="closeViewer()">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+        <span class="modal-title" id="viewer-title"></span>
+        <button class="btn-close" onclick="closeViewer()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body"><iframe id="viewer-frame"></iframe></div>
+    </div>
+
+    <script>
+      const API_BASE = "http://127.0.0.1:8000";
+      let token = localStorage.getItem("ob_token");
+      let currentUser = localStorage.getItem("ob_user");
+
+      function switchTab(t) {
+        document
+          .getElementById("login-form")
+          .classList.toggle("hidden", t !== "login");
+        document
+          .getElementById("register-form")
+          .classList.toggle("hidden", t !== "register");
+      }
+
+      async function doLogin() {
+        const fd = new FormData();
+        fd.append("username", document.getElementById("l-user").value);
+        fd.append("password", document.getElementById("l-pass").value);
+        const r = await fetch(`${API_BASE}/api/login`, {
+          method: "POST",
+          body: fd,
+        });
+        const d = await r.json();
+        if (r.ok) {
+          token = d.access_token;
+          currentUser = document.getElementById("l-user").value;
+          localStorage.setItem("ob_token", token);
+          localStorage.setItem("ob_user", currentUser);
+          showApp();
+        }
+      }
+
+      function logout() {
+        localStorage.clear();
+        location.reload();
+      }
+
+      function showApp() {
+        document.getElementById("auth-overlay").classList.add("hidden");
+        document.getElementById("app").classList.remove("hidden");
+        document.getElementById("btn-logout").style.display = "inline-block";
+        document.getElementById("nav-user").textContent = currentUser;
+        loadBooks();
+      }
+
+      function onFileChange(i) {
+        document.getElementById("file-name").textContent = i.files[0].name;
+      }
+
+      async function uploadBook() {
+        const fd = new FormData();
+        fd.append("title", document.getElementById("title-input").value);
+        fd.append("file", document.getElementById("pdf-input").files[0]);
+        await fetch(`${API_BASE}/api/books`, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` },
+          body: fd,
+        });
+        loadBooks();
+      }
+
+      async function loadBooks() {
+        const r = await fetch(`${API_BASE}/api/books`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const books = await r.json();
+        const grid = document.getElementById("book-grid");
+        grid.innerHTML = books
+          .map(
+            (b) => `
+          <div class="book-card">
+            <div class="book-thumb"><i class="fas fa-file-pdf"></i></div>
+            <div class="book-body">
+              <div class="book-title">${b.title}</div>
+              <div class="book-actions">
+                <a href="#" class="read-btn" onclick="openBook(event,'${b.filepath}','${b.title}')">Read</a>
+                <button class="btn-danger-full" onclick="deleteBook(${b.id})">Delete</button>
+              </div>
+            </div>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      async function deleteBook(id) {
+        if (!confirm("Delete this book?")) return;
+        await fetch(`${API_BASE}/api/books/${id}`, {
+          method: "DELETE",
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        loadBooks();
+      }
+
+      function openBook(e, path, title) {
+        e.preventDefault();
+        document.getElementById("viewer-frame").src =
+          `${API_BASE}/uploads/${path}`;
+        document.getElementById("viewer-title").textContent = title;
+        document.getElementById("viewer-modal").classList.remove("hidden");
+      }
+
+      function closeViewer() {
+        document.getElementById("viewer-modal").classList.add("hidden");
+      }
+
+      if (token) showApp();
+    </script>
+  </body>
+</html>
