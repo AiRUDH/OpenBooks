@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openbooks"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.111.0",
+    "uvicorn[standard]>=0.29.0",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.9",
+    "aiosqlite>=0.20.0",
+    "setuptools",
+    "bcrypt==4.3.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["backend*"]     # Only backend is the Python package
+exclude = ["frontend*", "tests*", "__pycache__*"]

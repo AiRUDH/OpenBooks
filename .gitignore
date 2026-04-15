@@ -1,0 +1,19 @@
+# Python environment and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.env
+
+# Database
+openbooks.db
+
+# macOS system files
+.DS_Store
+
+# Uploads directory
+# We ignore the directory but can allow specific files (see below)
+uploads/*
+!uploads/.gitkeep

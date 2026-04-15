@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+backend/__init__.py
+backend/main.py
+openbooks.egg-info/PKG-INFO
+openbooks.egg-info/SOURCES.txt
+openbooks.egg-info/dependency_links.txt
+openbooks.egg-info/requires.txt
+openbooks.egg-info/top_level.txt
